@@ -97,7 +97,7 @@ The load balancer distributes incoming requests across the instances, ensuring n
 
 ## Rate Limiting: Implemented rate-limiting middleware to handle bursts of user requests without overloading the system.
 
-# Middleware Implementation:
+**Middleware Implementation:**
 Used express-rate-limit middleware to restrict the number of API requests a user or IP can make in a specific time. For example:
 
 ```javascript
