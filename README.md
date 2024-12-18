@@ -73,6 +73,7 @@ I designed MongoDB collections to store data in a structured and efficient way:
 - User Collection: Stores user details like userId, username, and status.
 - Chat Collection: Stores chatId, participants, and a reference to the messages.
 - Message Collection: Stores messageId, chatId, senderId, content, and timestamp.
+
 By separating data into collections and referencing related items, the database avoids duplication and remains easy to manage.
 
 Indexing:
@@ -80,6 +81,8 @@ Indexed frequently queried fields like userId and chatId using MongoDB’s built
 ```javascript
 db.messages.createIndex({ chatId: 1, timestamp: -1 });
 ```
+This allows the app to fetch all messages in a chat or sort them by time efficiently.
+
 
 ## Horizontal Scaling: 
 Designed the backend with stateless REST APIs using Express to allow horizontal scaling by deploying multiple instances of the app behind a load balancer.
