@@ -93,9 +93,11 @@ Load Balancer Setup(*TODO*):
 Deployed the backend on multiple instances using Docker and ran them behind a load balancer (e.g., NGINX or AWS ELB).
 The load balancer distributes incoming requests across the instances, ensuring no single instance gets overwhelmed.
 
-## Socket.IO Integration: Used Socket.IO for real-time communication with efficient message broadcasting mechanisms, reducing overhead for clients and server.
+## Socket.IO Integration: 
+Used Socket.IO for real-time communication with efficient message broadcasting mechanisms, reducing overhead for clients and server.
 
-## Rate Limiting: Implemented rate-limiting middleware to handle bursts of user requests without overloading the system.
+## Rate Limiting: 
+Implemented rate-limiting middleware to handle bursts of user requests without overloading the system.
 
 **Middleware Implementation:**
 Used express-rate-limit middleware to restrict the number of API requests a user or IP can make in a specific time. For example:
