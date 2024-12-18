@@ -70,9 +70,9 @@ Implemented MongoDB with a schema optimized for real-time chat data. Indexed fre
 Schema Optimization:
 
 I designed MongoDB collections to store data in a structured and efficient way:
-User Collection: Stores user details like userId, username, and status.
-Chat Collection: Stores chatId, participants, and a reference to the messages.
-Message Collection: Stores messageId, chatId, senderId, content, and timestamp.
+- User Collection: Stores user details like userId, username, and status.
+- Chat Collection: Stores chatId, participants, and a reference to the messages.
+- Message Collection: Stores messageId, chatId, senderId, content, and timestamp.
 By separating data into collections and referencing related items, the database avoids duplication and remains easy to manage.
 
 Indexing:
