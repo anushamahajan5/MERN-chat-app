@@ -86,15 +86,26 @@ This allows the app to fetch all messages in a chat or sort them by time efficie
 
 ## Horizontal Scaling: 
 Designed the backend with stateless REST APIs using Express to allow horizontal scaling by deploying multiple instances of the app behind a load balancer.
-tateless REST APIs:
+**stateless REST APIs**: A stateless REST API refers to an API design in which each request made to the server contains all the necessary information for the server to process it. The server does not store any information about previous requests, meaning it doesn't keep track of the state between requests.
 
-The backend was built with Express.js and designed so each request is independent (stateless). For instance:
-Each API call, like fetching messages or sending one, includes all necessary information (e.g., user ID and authentication token).
-This made it easy to deploy multiple backend instances.
+## Key Characteristics of Stateless REST APIs:
+- No Session Storage: In a stateless API, the server doesn't store any session data about the client between requests. Each request is independent and must contain all the information required to process it (such as user authentication details, parameters, etc.).
+- Each Request is Self-contained: Every HTTP request sent to the server must include all the necessary information (such as user credentials, parameters, or data) for the server to understand and process the request. For example, the client might send a token or credentials with each request to authenticate the user, rather than the server remembering the user from previous requests.
+- Scalability: Stateless APIs are highly scalable because the server doesn’t need to remember any information between requests. This allows multiple server instances to handle requests independently and share the load, often behind a load balancer. This is useful in cloud applications where resources can be scaled up or down based on demand.
+- Efficiency: Since there is no need to maintain session states, stateless APIs are generally more efficient and faster, particularly in large-scale applications.
+- Reduced Server Load: As the server doesn't need to store session or state information, it reduces the load on the server, leading to better performance and less resource consumption.
 
-Load Balancer Setup(*TODO*):
-Deployed the backend on multiple instances using Docker and ran them behind a load balancer (e.g., NGINX or AWS ELB).
-The load balancer distributes incoming requests across the instances, ensuring no single instance gets overwhelmed.
+*Example of Statelessness*:
+
+Let's say you're building an e-commerce app, and a user is making a request to get their order history.
+
+1. **Stateful API**: The server would store the user's session (using a session ID or cookie). For the subsequent request, it would recognize the session ID and associate it with the user’s data.
+2. **Stateless API**: The client must send the authentication token (e.g., JWT) with each request. The server doesn't remember the user; instead, it decodes the token with each request to validate the user's identity and provide the order history.
+
+Benefits of Stateless REST APIs:
+1. Scalability: As the server doesn't need to remember state between requests, it can handle large volumes of traffic more efficiently.
+2. Simplicity: Stateless APIs tend to be simpler and easier to scale and maintain because there is no need to manage session data.
+3. Resilience: Each request is independent. If one server fails, another server can pick up the request and process it without issues.
 
 ## Socket.IO Integration: 
 Used Socket.IO for real-time communication with efficient message broadcasting mechanisms, reducing overhead for clients and server.
@@ -116,7 +127,7 @@ const apiLimiter = rateLimit({
 app.use("/api/", apiLimiter);
 ```
 
-Benefits:
+Benefits of Middleware:
 1. Protected the system from overload during traffic spikes or intentional abuse.
 2. Ensured a smooth experience for all users by distributing resources fairly.
 
